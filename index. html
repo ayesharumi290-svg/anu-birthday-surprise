@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ANU! 🎉</title>
+<style>
+  body {
+    text-align: center;
+    background: pink;
+    font-family: Arial, sans-serif;
+    color: purple;
+    margin-top: 60px;
+  }
+  #countdown {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  #messageBtn {
+    background: red;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🎂 Happy Birthday ANU! 🎂</h1>
+<div id="countdown"></div>
+
+<button id="messageBtn">Click for Love Message 💖</button>
+<p id="loveMessage" style="display:none; font-size:1.5rem; margin-top:20px;">
+  ANU, you mean the world to me. I love you more every day. 💗✨
+</p>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_577e773c1d.mp3?filename=romantic-emotional-113872.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Countdown
+const targetDate = new Date("February 9, 2026 00:00:00").getTime();
+const countdownElement = document.getElementById("countdown");
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+
+// Love message button
+document.getElementById("messageBtn").onclick = function() {
+  document.getElementById("loveMessage").style.display = "block";
+};
+
+// Play background music
+const bgMusic = document.getElementById("bgMusic");
+window.onload = () => bgMusic.play().catch(() => {});
+</script>
+
+</body>
+</html>
